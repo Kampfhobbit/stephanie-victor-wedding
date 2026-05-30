@@ -1001,7 +1001,7 @@ function submitRSVP(e) {
     ].filter(Boolean).join(', ') : '',
     message: document.getElementById('message').value
   };
-  var WEBHOOK_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+  var WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbx3-Nm1LbMn7Tzr3mYOiX-DVgXUFgAPg5Sca8xv4EuxOTYA8Cua7b2YAzEjvmv6GQ-a/exec';
   if (WEBHOOK_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') { setTimeout(showSuccess, 600); return; }
   fetch(WEBHOOK_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) })
     .then(function() { showSuccess(); }).catch(function() { showSuccess(); });
