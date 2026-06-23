@@ -248,6 +248,27 @@
   .presents-inner { max-width: 680px; margin: 0 auto; text-align: center; }
   .presents-text { font-size: 15px; color: var(--mid); line-height: 1.9; margin-bottom: 2rem; }
 
+  /* BANK CARDS */
+  .bank-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2.5rem; text-align: left; }
+  @media (max-width: 600px) { .bank-cards { grid-template-columns: 1fr; } }
+  .bank-card { border: 0.5px solid var(--light-border); background: white; border-radius: 2px; overflow: hidden; }
+  .bank-card-trigger { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem; cursor: pointer; user-select: none; transition: background 0.2s; }
+  .bank-card-trigger:hover { background: var(--hunter-pale); }
+  .bank-card-trigger-left { display: flex; align-items: center; gap: 0.75rem; }
+  .bank-card-flag { font-size: 20px; line-height: 1; }
+  .bank-card-country { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--nude-dark); }
+  .bank-card-chevron { width: 20px; height: 20px; color: var(--mid); transition: transform 0.3s ease; flex-shrink: 0; }
+  .bank-card.open .bank-card-chevron { transform: rotate(180deg); }
+  .bank-card-rows { display: none; flex-direction: column; gap: 0.75rem; padding: 1.25rem 1.5rem 1.5rem; border-top: 0.5px solid var(--light-border); }
+  .bank-card.open .bank-card-rows { display: flex; }
+  .bank-row { display: flex; align-items: center; gap: 0.5rem; min-height: 24px; }
+  .bank-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid); width: 72px; flex-shrink: 0; }
+  .bank-value { font-size: 13px; color: var(--dark); flex: 1; min-width: 0; word-break: break-all; }
+  .bank-mono { font-family: 'Courier New', monospace; font-size: 12.5px; letter-spacing: 0.05em; }
+  .copy-btn { flex-shrink: 0; background: none; border: 0.5px solid var(--light-border); border-radius: 4px; padding: 4px 6px; cursor: pointer; color: var(--mid); display: flex; align-items: center; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+  .copy-btn:hover { background: var(--hunter-pale); border-color: var(--hunter); color: var(--hunter); }
+  .copy-btn.copied { background: var(--hunter); border-color: var(--hunter); color: white; }
+
   /* RSVP */
   #rsvp { background: transparent; color: white; padding: 100px 2rem; }
   .rsvp-inner { max-width: 600px; margin: 0 auto; text-align: center; }
@@ -407,12 +428,12 @@
   <div class="hero-photo"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow" data-es="Los invitamos a celebrar" data-en="You are warmly invited to celebrate" data-de="Ihr seid herzlich eingeladen zu feiern">Los invitamos a celebrar</p>
+
     <h1 class="hero-names">Stephanie<br><em>&</em><br>Victor</h1>
     <div class="hero-date-badge">
       <span>08 · 05 · 2027</span>
       <span style="opacity:0.4">·</span>
-      <span data-es="CDMX" data-en="CDMX" data-de="Mexico City">CDMX</span>
+      <span data-es="CDMX" data-en="Mexico City" data-de="Mexico City">CDMX</span>
     </div>
     <br>
     <a href="#rsvp" class="hero-cta" data-es="Confirmar Asistencia" data-en="Confirm Attendance" data-de="Bist du dabei?">Confirmar Asistencia</a>
@@ -522,8 +543,8 @@
         </div>
         <div>
           <p style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--nude-dark); margin-bottom:0.5rem;">12:00</p>
-          <h3 style="font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:400; color:var(--dark); margin-bottom:0.5rem;" data-es="Boozy Brunch · Madre Café" data-en="Boozy Brunch" data-de="Boozy Brunch">Boozy Brunch · Madre Café</h3>
-          <p style="font-size:14px; color:var(--mid); line-height:1.65;" data-es="Nos encontramos en Madre Café, Roma Norte, para desayunar juntos y &ldquo;recordar&rdquo; todo lo que pasó la noche anterior. Va por cuenta propia." data-en="The morning-after brunch. We meet at Madre Café, Roma Norte — the perfect spot to relive the best moments of the wedding." data-de="Der Brunch am Tag danach.">Nos encontramos en Madre Café, Roma Norte, para desayunar juntos y "recordar" todo lo que pasó la noche anterior. Va por cuenta propia.</p>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:400; color:var(--dark); margin-bottom:0.5rem;" data-es="Boozy Brunch" data-en="Boozy Brunch" data-de="Boozy Brunch">Boozy Brunch</h3>
+          <p style="font-size:14px; color:var(--mid); line-height:1.65;" data-es="Nos encontramos para desayunar juntos y &ldquo;recordar&rdquo; todo lo que pasó la noche anterior. Va por cuenta propia." data-en="The morning-after brunch. The perfect spot to relive the best moments of the wedding. Each guest covers their own." data-de="Der Brunch am Tag danach. Der perfekte Ort, um die schönsten Momente nochmal zu erleben. Jeder zahlt für sich.">Nos encontramos para desayunar juntos y "recordar" todo lo que pasó la noche anterior. Va por cuenta propia.</p>
         </div>
       </div>
 
@@ -642,17 +663,17 @@
       <div class="card">
         <span class="badge-green">Traditional Mexican</span>
         <h3 class="card-name">El Cardenal</h3>
-        <p class="card-meta">Calle de la Palma 23 · 8:00–18:30</p>
-        <p class="card-desc" data-es="Institución de la Ciudad de México desde 1969. Manteles blancos, recetas tradicionales y el mejor chocolate caliente que van a probar." data-en="A Mexico City institution since 1969. White tablecloths, traditional Mexican recipes, and the best hot chocolate you will ever drink." data-de="Eine Institution in Mexiko-Stadt seit 1969.">Institución de la Ciudad de México desde 1969. Manteles blancos, recetas tradicionales y el mejor chocolate caliente que van a probar.</p>
-        <p class="card-note" data-es="Pedir el chocolate de mesa y las conchas frescas" data-en="Order the table chocolate and fresh conchas" data-de="Heiße Schokolade und frische &quot;Conchas&quot;">Pedir el chocolate de mesa y las conchas frescas</p>
         <a href="https://maps.app.goo.gl/L7QJMgnV2AavWdid9" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-nude" data-es="Favorito de Stephanie" data-en="Stephanie's favourite" data-de="Stephanies Liebling">Favorito de Stephanie</span>
         <h3 class="card-name">Peltre Lonchería</h3>
-        <p class="card-meta">Pensilvania 167, Nápoles · 7:00–22:00</p>
-        <p class="card-desc" data-es="Local de desayunos muy querido, con mucha luz natural y unos chilaquiles excelentes. Uno de los mejores evaluados de la ciudad." data-en="A beloved breakfast spot with beautiful natural light and great chilaquiles. One of the best-rated in the city." data-de="Ein beliebtes Frühstückslokal mit wunderschönem natürlichem Licht.">Local de desayunos muy querido, con mucha luz natural y unos chilaquiles excelentes.</p>
-        <a href="https://maps.app.goo.gl/do5aKfZtfZ2oTVe99" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
+        <a href="https://maps.app.goo.gl/HB7eVZDeTLKUyVRA8" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
+      </div>
+      <div class="card">
+        <span class="badge-green">Cafetería</span>
+        <h3 class="card-name">Cafe Tormenta</h3>
+        <a href="https://share.google/yGO4GnnSdv1h72aa8" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
     </div>
 
@@ -661,29 +682,21 @@
       <div class="card">
         <span class="badge-michelin">⭐ Michelin</span>
         <h3 class="card-name">Tacos del Valle</h3>
-        <p class="card-meta">Roma Norte</p>
-        <p class="card-desc" data-es="Tacos con estrella Michelin en el corazón de Roma Norte. Una parada obligada." data-en="Michelin-starred tacos in the heart of Roma Norte. A must-stop." data-de="Michelin-Stern Tacos im Herzen der Roma Norte.">Tacos con estrella Michelin en el corazón de Roma Norte. Una parada obligada.</p>
         <a href="https://maps.app.goo.gl/Ayo7PFGjTdBpSh9q9" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-green">Tacos</span>
         <h3 class="card-name">Casa del Pastor</h3>
-        <p class="card-meta">CDMX</p>
-        <p class="card-desc" data-es="Tacos al pastor de primer nivel. Clásicos y perfectos." data-en="Top-level tacos al pastor. Classic and perfect." data-de="Erstklassige Tacos al Pastor. Klassisch und perfekt.">Tacos al pastor de primer nivel. Clásicos y perfectos.</p>
         <a href="https://maps.app.goo.gl/5hkZ1P9fGic6YSKF8" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-green">Tacos</span>
         <h3 class="card-name">Los Consentidos Insurgentes</h3>
-        <p class="card-meta">Insurgentes</p>
-        <p class="card-desc" data-es="Tacos de barrio con mucho sabor y ambiente local auténtico." data-en="Neighbourhood tacos with great flavour and authentic local atmosphere." data-de="Authentische Atmosphäre">Tacos de barrio con mucho sabor y ambiente local auténtico.</p>
         <a href="https://maps.app.goo.gl/xaGJXFNuTMMWEx5h9" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-green">Premium Tacos</span>
         <h3 class="card-name">La Once Mil</h3>
-        <p class="card-meta">Roma Norte</p>
-        <p class="card-desc" data-es="Tacos premium en Roma Norte. Experiencia elevada con ingredientes de calidad." data-en="Premium tacos in Roma Norte. Elevated experience with quality ingredients." data-de="Premium Tacos in der Roma Norte. Gehobene Erfahrung mit Qualitätszutaten.">Tacos premium en Roma Norte. Experiencia elevada con ingredientes de calidad.</p>
         <a href="https://maps.app.goo.gl/gYUSvihqoP8BCUY39" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
     </div>
@@ -693,65 +706,52 @@
       <div class="card">
         <span class="badge-green">Mexican Street Food</span>
         <h3 class="card-name">Mercado de Antojitos de Coyoacán</h3>
-        <p class="card-meta">Coyoacán</p>
-        <p class="card-desc" data-es="Mercado auténtico en Coyoacán. Las quesadillas son imperdibles." data-en="Authentic market in Coyoacán. The quesadillas are a must-try." data-de="Authentischer Markt in Coyoacán. Die Quesadillas sind ein Muss.">Mercado auténtico en Coyoacán. Las quesadillas son imperdibles.</p>
         <a href="https://maps.app.goo.gl/9Gtk6YWMpcssWE7M7" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-green">Street Food</span>
         <h3 class="card-name">Mercado Roma</h3>
-        <p class="card-meta">Querétaro 225, Roma Norte · 10:00–22:30</p>
-        <p class="card-desc" data-es="Un mercado gourmet con tacos, tortas, ramen, empanadas y postres bajo un mismo techo." data-en="A gourmet food market where you can try tacos, tortas, ramen, empanadas, and desserts — all in one place." data-de="Ein Gourmet-Markt mit allem unter einem Dach.">Un mercado gourmet con tacos, tortas, ramen y postres bajo un mismo techo.</p>
         <a href="https://share.google/Xz8GpRxjvUqkDDbpL" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-green">Fine Mexican Dining</span>
         <h3 class="card-name">Porfirios</h3>
-        <p class="card-meta">CDMX</p>
-        <p class="card-desc" data-es="Alta cocina mexicana en un ambiente elegante. Clásico y sofisticado." data-en="Fine Mexican cuisine in an elegant setting. Classic and sophisticated." data-de="Gehobene mexikanische Küche in elegantem Ambiente.">Alta cocina mexicana en un ambiente elegante. Clásico y sofisticado.</p>
         <a href="https://maps.app.goo.gl/fV7yWyDNP3cnwRNx5" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-green">Fine Mexican Dining</span>
         <h3 class="card-name">Cuerno</h3>
-        <p class="card-meta">CDMX</p>
-        <p class="card-desc" data-es="Cocina mexicana contemporánea de autor. Ingredientes locales con técnica moderna." data-en="Contemporary Mexican cuisine. Local ingredients with modern technique." data-de="Zeitgenössische mexikanische Küche mit lokalen Zutaten.">Cocina mexicana contemporánea de autor. Ingredientes locales con técnica moderna.</p>
         <a href="https://maps.app.goo.gl/LamjvBxFNuSNH1oM6" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-green">Mariscos</span>
         <h3 class="card-name">Contramar</h3>
-        <p class="card-meta">Durango 200, Roma Norte · 12:00–20:00</p>
-        <p class="card-desc" data-es="Un gran lugar para mariscos." data-en="Great place for seafood." data-de="Ein großartiger Ort für Meeresfrüchte.">Posiblemente el restaurante más icónico de la CDMX. Las tostadas de atún son legendarias.</p>
         <a href="https://maps.app.goo.gl/kDnboYPQmXASFE998" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-green">Mariscos</span>
-        <h3 class="card-name">Fishers</h3>
-        <p class="card-meta">CDMX</p>
-        <p class="card-desc" data-es="Mariscos frescos en un ambiente relajado. Amplia carta con los mejores frutos del mar." data-en="Fresh seafood in a relaxed atmosphere. Wide menu with the best seafood." data-de="Frische Meeresfrüchte in entspannter Atmosphäre.">Mariscos frescos en un ambiente relajado. Amplia carta con los mejores frutos del mar.</p>
-        <a href="https://maps.app.goo.gl/EfRKx38EFv7PFvuD7" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
+        <h3 class="card-name">La Pescadería</h3>
+        <a href="https://share.google/FYjLmc2bEoy4Zdvgx" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-green" data-es="Probar el pozole" data-en="Try the pozole" data-de="Pozole probieren">Probar el pozole</span>
         <h3 class="card-name">La Casa de Toño</h3>
-        <p class="card-meta">Rio Neva</p>
-        <p class="card-desc" data-es="El lugar para probar el auténtico pozole mexicano. Cálido, reconfortante y delicioso." data-en="The place to try authentic Mexican pozole. Warm, comforting and delicious." data-de="Der Ort für authentisches mexikanisches Pozole. Warm, tröstlich und köstlich.">El lugar para probar el auténtico pozole mexicano. Cálido, reconfortante y delicioso.</p>
         <a href="https://maps.app.goo.gl/oUVxcirZ7saC4AEu7" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-nude" data-es="Ambiente mexicano" data-en="Mexican vibes" data-de="Mexikanisches Flair">Ambiente mexicano</span>
         <h3 class="card-name">La Coyoacana</h3>
-        <p class="card-meta">Coyoacán</p>
-        <p class="card-desc" data-es="Cena y copas al estilo mexicano. Puede ser ruidoso, ¡pero es muy divertido!" data-en="Dinner and drinks the Mexican way. Can get loud — but incredibly fun!" data-de="Abendessen und Drinks auf mexikanische Art. Kann laut werden — macht aber großen Spaß!">Cena y copas al estilo mexicano. Puede ser ruidoso, ¡pero es muy divertido!</p>
         <a href="https://maps.app.goo.gl/UpKF3fL4ffuZr5kn9" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-michelin">⭐ Michelin · Fine Dining</span>
         <h3 class="card-name">Pujol</h3>
-        <p class="card-meta">Tennyson 133, Polanco · 14:00–21:30 (cerr. dom.)</p>
-        <p class="card-desc" data-es="El restaurante del chef Enrique Olvera, uno de los 50 mejores del mundo. El mole envejecido solo ya vale el viaje." data-en="Chef Enrique Olvera's legendary restaurant — one of the 50 best on earth. The aged mole alone is worth the journey." data-de="Chef Enrique Olveras legendäres Restaurant — eines der 50 besten der Welt.">El restaurante del chef Enrique Olvera, uno de los 50 mejores del mundo. El mole envejecido solo ya vale el viaje.</p>
         <a href="https://maps.app.goo.gl/GyXV72bCuunkpHgf7" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
+      </div>
+      <div class="card">
+        <span class="badge-green">Bistro</span>
+        <h3 class="card-name">Máximo</h3>
+        <a href="https://share.google/ZfQLmGaGcsIBzwXoI" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
     </div>
 
@@ -877,10 +877,23 @@
         <p class="card-desc" data-es="Arte contemporáneo en un edificio de David Chipperfield, junto al Soumaya." data-en="Contemporary art in a sleek David Chipperfield building, next to Soumaya." data-de="Zeitgenössische Kunst in einem eleganten David-Chipperfield-Gebäude.">Arte contemporáneo en un edificio de David Chipperfield, junto al Soumaya.</p>
         <a href="https://maps.app.goo.gl/8p9L6HyfwxpszGuXA" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
-    </div>
+      <div class="card">
+        <span class="badge-green">Arte Contemporáneo</span>
+        <h3 class="card-name">Museo Tamayo</h3>
+        <p class="card-desc" data-es="Arte contemporáneo internacional en el Bosque de Chapultepec. Colección con Picasso, Rothko y Warhol. Entrada libre los domingos." data-en="International contemporary art in Chapultepec Park. Collection includes Picasso, Rothko, and Warhol. Free on Sundays." data-de="Zeitgenössische Kunst im Chapultepec-Park. Werke von Picasso, Rothko und Warhol. Sonntags kostenlos.">Arte contemporáneo internacional en el Bosque de Chapultepec. Colección con Picasso, Rothko y Warhol. Entrada libre los domingos.</p>
+        <a href="https://share.google/QPopttPsW7MbrmJjS" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
+      </div>
+      <div class="card">
+        <span class="badge-green">Arquitectura · UNESCO</span>
+        <h3 class="card-name">Casa Barragán</h3>
+        <p class="card-desc" data-es="La casa-estudio del arquitecto Luis Barragán, Patrimonio de la Humanidad. Un ejemplo único de arquitectura mexicana moderna, con luz, color y silencio. Visita con reserva previa." data-en="The home and studio of Pritzker Prize winner Luis Barragán — a UNESCO World Heritage Site. Bold colors, light, and silence. Book in advance." data-de="Wohnhaus des Architekten Luis Barragán — UNESCO-Welterbe. Farbe, Licht und Stille. Voranmeldung erforderlich.">La casa-estudio del arquitecto Luis Barragán, Patrimonio de la Humanidad. Un ejemplo único de arquitectura mexicana moderna, con luz, color y silencio. Visita con reserva previa.</p>
+        <a href="https://share.google/EgkjxA2mQFTy5Gh4L" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
+      </div>
 
     </div>
   </div>
+</div><!-- /#sights-body -->
+</div><!-- /.accordion-section#sights -->
 
 <!-- TIPS -->
 <div class="accordion-section" id="tips">
@@ -959,6 +972,79 @@
     <span class="section-label" style="display:block;text-align:center" data-es="Regalos" data-en="Gifts" data-de="Geschenke">Regalos</span>
     <h2 class="section-title" style="text-align:center" data-es="Tu presencia es el mejor regalo" data-en="Your presence is the best gift" data-de="Deine Anwesenheit ist das schönste Geschenk">Tu presencia es el mejor regalo</h2>
     <p class="presents-text" data-es="Su compañía en este día tan especial es el regalo más grande que podemos recibir. Si desean celebrarnos con un detalle, con mucho gusto aceptamos una contribución para nuestra luna de miel. Gracias de corazón por ser parte de nuestra historia." data-en="Your company on this special day is the greatest gift we could receive. If you wish to celebrate us with a gesture, we would gratefully welcome a contribution towards our honeymoon. Thank you from the bottom of our hearts for being part of our story." data-de="Eure Gesellschaft an diesem besonderen Tag ist das größte Geschenk. Wenn ihr uns mit einer Geste beehren möchtet, nehmen wir gerne einen Beitrag zur Hochzeitsreise entgegen. Danke von Herzen, dass ihr Teil unserer Geschichte seid.">Su compañía en este día tan especial es el regalo más grande que podemos recibir. Si desean celebrarnos con un detalle, con mucho gusto aceptamos una contribución para nuestra luna de miel o en efectivo el día del evento. Gracias de corazón por ser parte de nuestra historia.</p>
+
+    <!-- Bank Cards -->
+    <div class="bank-cards">
+
+      <!-- Austria -->
+      <div class="bank-card">
+        <div class="bank-card-trigger" onclick="toggleBankCard(this)">
+          <div class="bank-card-trigger-left">
+            <span class="bank-card-flag">🇦🇹</span>
+            <span class="bank-card-country" data-es="Transferencia desde Europa" data-en="Transfer from Europe" data-de="Überweisung aus Europa">Transferencia desde Europa</span>
+          </div>
+          <svg class="bank-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="bank-card-rows">
+          <div class="bank-row">
+            <span class="bank-label" data-es="Titular" data-en="Holder" data-de="Inhaber">Titular</span>
+            <span class="bank-value">Victor Gatterer Serrano</span>
+            <button class="copy-btn" onclick="copyField(this, 'Victor Gatterer Serrano')" aria-label="Copiar">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">IBAN</span>
+            <span class="bank-value bank-mono">AT61 2011 1293 1682 5300</span>
+            <button class="copy-btn" onclick="copyField(this, 'AT6120111293168253 00')" aria-label="Copiar IBAN">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">BIC</span>
+            <span class="bank-value bank-mono">GIBAATWWXXX</span>
+            <button class="copy-btn" onclick="copyField(this, 'GIBAATWWXXX')" aria-label="Copiar BIC">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mexico -->
+      <div class="bank-card">
+        <div class="bank-card-trigger" onclick="toggleBankCard(this)">
+          <div class="bank-card-trigger-left">
+            <span class="bank-card-flag">🇲🇽</span>
+            <span class="bank-card-country" data-es="Transferencia desde México" data-en="Transfer from Mexico" data-de="Überweisung aus Mexiko">Transferencia desde México</span>
+          </div>
+          <svg class="bank-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="bank-card-rows">
+          <div class="bank-row">
+            <span class="bank-label" data-es="Titular" data-en="Holder" data-de="Inhaber">Titular</span>
+            <span class="bank-value" data-es="Stephanie Yllescas Alanis" data-en="Stephanie Yllescas Alanis" data-de="Stephanie Yllescas Alanis">Stephanie Yllescas Alanis</span>
+            <button class="copy-btn" onclick="copyField(this, 'Stephanie Yllescas Alanis')" aria-label="Copiar">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">CLABE</span>
+            <span class="bank-value bank-mono">002180700758241711</span>
+            <button class="copy-btn" onclick="copyField(this, '002180700758241711')" aria-label="Copiar CLABE">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label" data-es="Banco" data-en="Bank" data-de="Bank">Banco</span>
+            <span class="bank-value" data-es="Banamex" data-en="Banamex" data-de="Banamex">Banamex</span>
+            <button class="copy-btn" onclick="copyField(this, 'Banamex')" aria-label="Copiar banco">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /bank-cards -->
   </div>
 </section>
 
@@ -1014,7 +1100,7 @@
             </label>
             <label style="display:flex; align-items:center; gap:0.75rem; cursor:pointer; font-size:14px; color:white; font-weight:300; letter-spacing:0.03em;">
               <input type="checkbox" id="evt-torna" name="events" value="Boozy Brunch" style="width:18px;height:18px;accent-color:var(--nude);cursor:pointer;flex-shrink:0;">
-              <span data-es="Boozy Brunch — 09 de mayo, 12:00 · Madre Café" data-en="Boozy Brunch — 9 May, 12:00" data-de="Boozy Brunch — 9. Mai, 12:00">Boozy Brunch — 09 de mayo, 12:00 · Madre Café</span>
+              <span data-es="Boozy Brunch — 09 de mayo, 12:00" data-en="Boozy Brunch — 9 May, 12:00" data-de="Boozy Brunch — 9. Mai, 12:00">Boozy Brunch — 09 de mayo, 12:00</span>
             </label>
           </div>
         </div>
@@ -1048,6 +1134,28 @@
 </footer>
 
 <script>
+function toggleBankCard(trigger) {
+  var card = trigger.closest('.bank-card');
+  var allCards = document.querySelectorAll('.bank-card');
+  // On desktop (>600px): close others first
+  if (window.innerWidth > 600) {
+    allCards.forEach(function(c) { if (c !== card) c.classList.remove('open'); });
+  }
+  card.classList.toggle('open');
+}
+
+function copyField(btn, text) {
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    var orig = btn.innerHTML;
+    btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = orig;
+    }, 1800);
+  });
+}
+
 function toggleAccordion(bodyId, header) {
   var body = document.getElementById(bodyId);
   var isOpen = body.classList.contains('open');
