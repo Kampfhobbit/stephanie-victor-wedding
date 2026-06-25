@@ -41,6 +41,8 @@
   .lang-toggle { display: flex; border: 0.5px solid var(--hunter); border-radius: 20px; overflow: hidden; }
   .lang-btn { padding: 5px 12px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; background: transparent; border: none; cursor: pointer; color: var(--hunter); font-family: 'Jost', sans-serif; font-weight: 400; transition: background 0.2s, color 0.2s; }
   .lang-btn.active { background: var(--hunter); color: white; }
+  .lang-popup-btn { font-family: 'Jost', sans-serif; font-size: 15px; font-weight: 300; letter-spacing: 0.1em; color: var(--hunter); background: transparent; border: 0.5px solid var(--light-border); padding: 0.85rem 1.5rem; cursor: pointer; transition: background 0.2s, color 0.2s; border-radius: 2px; width: 100%; }
+  .lang-popup-btn:hover { background: var(--hunter); color: white; }
 
   /* HERO */
   .hero {
@@ -394,6 +396,18 @@
 </head>
 <body>
 
+<!-- Language Selection Popup -->
+<div id="langPopup" style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);">
+  <div style="background:var(--cream);padding:3rem 3.5rem;text-align:center;max-width:340px;width:90%;border-radius:2px;box-shadow:0 8px 40px rgba(0,0,0,0.18);">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:2rem;">Stephanie &amp; Victor</p>
+    <div style="display:flex;flex-direction:column;gap:0.85rem;">
+      <button class="lang-popup-btn" onclick="chooseLang('es')">Espa&#241;ol</button>
+      <button class="lang-popup-btn" onclick="chooseLang('en')">English</button>
+      <button class="lang-popup-btn" onclick="chooseLang('de')">Deutsch</button>
+    </div>
+  </div>
+</div>
+
 <!-- NAV -->
 <nav>
   <div class="nav-logo">S <em style="font-style:italic">&</em> V</div>
@@ -578,13 +592,13 @@
       <!-- Ladies text -->
       <div style="text-align:left; padding-top:0.5rem; background:rgba(0,0,0,0.28); padding:1.25rem 1.5rem; border-radius:4px;">
         <p style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.9); margin-bottom:1rem; border-bottom:0.5px solid rgba(255,255,255,0.4); padding-bottom:0.75rem;" data-es="Damas" data-en="Ladies" data-de="Damen">Damas</p>
-        <p style="font-size:15px; color:white; line-height:1.9;" data-es="Vestidos largos, siluetas ligeras y conjuntos elegantes. El color es bienvenido — suave o vibrante, todo encaja." data-en="Long dresses, breezy silhouettes, and elegant separates all work well. Color is welcome and encouraged, whether soft or vibrant." data-de="Lange Kleider, luftige Silhouetten und elegante Separates. Farbe ist willkommen und erwünscht.">Vestidos largos, siluetas ligeras y conjuntos elegantes. El color es bienvenido — suave o vibrante, todo encaja.</p>
+        <p style="font-size:15px; color:white; line-height:1.9;" data-es="Vestidos largos, siluetas ligeras y conjuntos elegantes. El color es bienvenido — suave o vibrante, todo encaja." data-en="Long dresses, breezy silhouettes, and elegant sets. Color welcome." data-de="Lange Kleider, luftige Silhouetten und elegante Sets. Farbe willkommen.">Vestidos largos, siluetas ligeras y conjuntos elegantes. El color es bienvenido — suave o vibrante, todo encaja.</p>
       </div>
 
       <!-- Gents text -->
       <div style="text-align:left; padding-top:0.5rem; background:rgba(0,0,0,0.28); padding:1.25rem 1.5rem; border-radius:4px;">
         <p style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.9); margin-bottom:1rem; border-bottom:0.5px solid rgba(255,255,255,0.4); padding-bottom:0.75rem;" data-es="Caballeros" data-en="Gentlemen" data-de="Herren">Caballeros</p>
-        <p style="font-size:15px; color:white; line-height:1.9;" data-es="Trajes sastre, blazers o camisas de vestir en telas ligeras como lino o algodón. La corbata es opcional." data-en="Tailored suits, blazers, or dress shirts in lighter or natural fabrics like linen or cotton. Ties are optional." data-de="Maßgeschneiderte Anzüge, Blazer oder Hemden in leichten Stoffen wie Leinen oder Baumwolle. Krawatte optional.">Trajes sastre, blazers o camisas de vestir en telas ligeras como lino o algodón. La corbata es opcional.</p>
+        <p style="font-size:15px; color:white; line-height:1.9;" data-es="Trajes sastre, blazers o camisas de vestir en telas ligeras como lino o algodón. La corbata es opcional." data-en="Suits, blazers, shirts in lighter fabrics. Ties optional." data-de="Anzüge, Blazer oder Hemden in leichten Stoffen. Krawatte optional.">Trajes sastre, blazers o camisas de vestir en telas ligeras como lino o algodón. La corbata es opcional.</p>
       </div>
 
       <!-- Gents carousel RIGHT -->
@@ -603,7 +617,7 @@
       <div style="margin-bottom:2rem;">
         <div style="background:rgba(0,0,0,0.28); padding:1.25rem 1.5rem; border-radius:4px; margin-bottom:1rem;">
         <p style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.9); margin-bottom:0.75rem;" data-es="Damas" data-en="Ladies" data-de="Damen">Damas</p>
-        <p style="font-size:14px; color:white; margin-bottom:0;" data-es="Vestidos largos, siluetas ligeras y conjuntos elegantes. El color es bienvenido — suave o vibrante, todo encaja." data-en="Long dresses, breezy silhouettes, and elegant separates. Color welcome." data-de="Lange Kleider, luftige Silhouetten.">Vestidos largos, siluetas ligeras y conjuntos elegantes. El color es bienvenido — suave o vibrante, todo encaja.</p>
+        <p style="font-size:14px; color:white; margin-bottom:0;" data-es="Vestidos largos, siluetas ligeras y conjuntos elegantes. El color es bienvenido — suave o vibrante, todo encaja." data-en="Long dresses, breezy silhouettes, and elegant sets. Color welcome." data-de="Lange Kleider, luftige Silhouetten und elegante Sets. Farbe willkommen.">Vestidos largos, siluetas ligeras y conjuntos elegantes. El color es bienvenido — suave o vibrante, todo encaja.</p>
         </div>
         <div class="dc-carousel" id="carousel-ladies-m" style="position:relative; overflow:hidden; border-radius:4px;">
           <div class="dc-slides" style="display:flex; transition:transform 0.6s ease;"></div>
@@ -615,7 +629,7 @@
       <div>
         <div style="background:rgba(0,0,0,0.28); padding:1.25rem 1.5rem; border-radius:4px; margin-bottom:1rem;">
         <p style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.9); margin-bottom:0.75rem;" data-es="Caballeros" data-en="Gentlemen" data-de="Herren">Caballeros</p>
-        <p style="font-size:14px; color:white; margin-bottom:0;" data-es="Trajes sastre, blazers o camisas de vestir en telas ligeras como lino o algodón. La corbata es opcional." data-en="Tailored suits, blazers or dress shirts in lighter fabrics. Ties optional." data-de="Anzüge oder Hemden in leichten Stoffen. Krawatte optional.">Trajes sastre, blazers o camisas de vestir en telas ligeras como lino o algodón. La corbata es opcional.</p>
+        <p style="font-size:14px; color:white; margin-bottom:0;" data-es="Trajes sastre, blazers o camisas de vestir en telas ligeras como lino o algodón. La corbata es opcional." data-en="Suits, blazers, shirts in lighter fabrics. Ties optional." data-de="Anzüge, Blazer oder Hemden in leichten Stoffen. Krawatte optional.">Trajes sastre, blazers o camisas de vestir en telas ligeras como lino o algodón. La corbata es opcional.</p>
         </div>
         <div class="dc-carousel" id="carousel-gents-m" style="position:relative; overflow:hidden; border-radius:4px;">
           <div class="dc-slides" style="display:flex; transition:transform 0.6s ease;"></div>
@@ -776,13 +790,13 @@
       <div class="card">
         <span class="badge-green">Mexico Folklore</span>
         <h3 class="card-name">Coyoacán</h3>
-        <p class="card-desc" data-es="Barrio bohemio y colorido con mercados, cafés y la Casa Azul de Frida Kahlo. Un paseo imperdible." data-en="Bohemian and colourful neighbourhood with markets, cafés and Frida Kahlo's Blue House. A must-visit." data-de="Böhmisches, farbenfrohes Viertel mit Märkten, Cafés und dem Blauen Haus von Frida Kahlo.">Barrio bohemio y colorido con mercados, cafés y la Casa Azul de Frida Kahlo. Un paseo imperdible.</p>
+        <p class="card-desc" data-es="Barrio bohemio y colorido con mercados, cafés y la Casa Azul de Frida Kahlo. Un paseo imperdible." data-en="Colourful neighbourhood with markets, cafés and Frida Kahlo's Blue House." data-de="Buntes &amp; authentisches Viertel mit Märkten, Cafés und Frida Kahlos &quot;Casa Azul&quot;.">Barrio bohemio y colorido con mercados, cafés y la Casa Azul de Frida Kahlo. Un paseo imperdible.</p>
         <a href="https://maps.app.goo.gl/QJf7LDHKUqBJ32Hp8" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-green">Hipster Barrio</span>
         <h3 class="card-name">Roma Norte</h3>
-        <p class="card-desc" data-es="El barrio más de moda de la ciudad. Cafés de especialidad, galerías, restaurantes y vida nocturna." data-en="The trendiest neighbourhood in the city. Specialty cafés, galleries, restaurants and nightlife." data-de="Das angesagteste Viertel der Stadt. Spezialitätencafés, Galerien, Restaurants und Nachtleben.">El barrio más de moda de la ciudad. Cafés de especialidad, galerías, restaurantes y vida nocturna.</p>
+        <p class="card-desc" data-es="El barrio más de moda de la ciudad. Cafés de especialidad, galerías, restaurantes y vida nocturna." data-en="The trendiest neighbourhood in the city. Specialty cafés, galleries, restaurants and nightlife." data-de="Ein cooles Stadtviertel mit kleinen Cafés, Galerien, Restaurants und Nachtleben.">El barrio más de moda de la ciudad. Cafés de especialidad, galerías, restaurantes y vida nocturna.</p>
         <a href="https://maps.app.goo.gl/WxvgdxQ5yE3C6x5c8" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
@@ -816,7 +830,7 @@
       <div class="card">
         <span class="badge-green">Main Square</span>
         <h3 class="card-name">El Zócalo</h3>
-        <p class="card-desc" data-es="El corazón histórico de la CDMX, rodeado de la Catedral Metropolitana y el Palacio Nacional." data-en="The historic heart of Mexico City, surrounded by the Metropolitan Cathedral and the National Palace." data-de="Das historische Herz von Mexiko-Stadt.">El corazón histórico de la CDMX, rodeado de la Catedral Metropolitana y el Palacio Nacional.</p>
+        <p class="card-desc" data-es="El corazón histórico de la CDMX, rodeado de la Catedral Metropolitana y el Palacio Nacional." data-en="The historic heart of Mexico City, surrounded by the Metropolitan Cathedral and the National Palace." data-de="Das historische Herz von Mexico City, mit der großen Catedral Metropolitana.">El corazón histórico de la CDMX, rodeado de la Catedral Metropolitana y el Palacio Nacional.</p>
 
         <a href="https://maps.app.goo.gl/uu1yznDgjEkXRS4f6" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
@@ -854,20 +868,20 @@
       <div class="card">
         <span class="badge-green">Aztecas</span>
         <h3 class="card-name">Museo Nacional de Antropología</h3>
-        <p class="card-desc" data-es="Uno de los mejores museos del mundo. Sede de la Piedra del Sol azteca. Planear al menos 3 horas." data-en="One of the greatest museums in the world. Home to the Aztec Sun Stone. Plan at least 3 hours." data-de="Eines der großartigsten Museen der Welt. Mindestens 3 Stunden einplanen.">Uno de los mejores museos del mundo. Sede de la Piedra del Sol azteca. Planear al menos 3 horas.</p>
+        <p class="card-desc" data-es="Uno de los mejores museos del mundo. Sede de la Piedra del Sol azteca. Planear al menos 3 horas." data-en="One of the greatest museums in the world. Home to the Aztec Sun Stone. Plan at least 3 hours." data-de="Eines der großartigsten Museen weltweit, mit einer riesigen Ausstellung zur präkolumbianischen Kultur Mexikos: Olmeken, Azteken und viele mehr.">Uno de los mejores museos del mundo. Sede de la Piedra del Sol azteca. Planear al menos 3 horas.</p>
         <a href="https://maps.app.goo.gl/PBd1QMd8iEWyiPWeA" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-green">Arte</span>
         <h3 class="card-name">Casa Azul · Frida Kahlo</h3>
-        <p class="card-desc" data-es="La famosa Casa Azul donde nació y vivió Frida Kahlo. Profundamente emotiva y como ningún otro museo." data-en="The famous Blue House where Frida Kahlo was born and lived. Deeply moving and unlike any other museum." data-de="Das berühmte Blaue Haus, in dem Frida Kahlo geboren wurde.">La famosa Casa Azul donde nació y vivió Frida Kahlo. Profundamente emotiva y como ningún otro museo.</p>
+        <p class="card-desc" data-es="La famosa Casa Azul donde nació y vivió Frida Kahlo. Profundamente emotiva y como ningún otro museo." data-en="The famous Blue House where Frida Kahlo was born and lived. Deeply moving and unlike any other museum." data-de="Das berühmte Haus von Frida Kahlo, in dem sie geboren ist und gelebt hat.">La famosa Casa Azul donde nació y vivió Frida Kahlo. Profundamente emotiva y como ningún otro museo.</p>
 
         <a href="https://maps.app.goo.gl/R4V5ZaVKod4iycn77" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
         <span class="badge-green">Arte · Cultura · Arquitectura</span>
         <h3 class="card-name">Palacio de Bellas Artes</h3>
-        <p class="card-desc" data-es="Uno de los edificios Art Nouveau más hermosos de América, con los murales más poderosos de Diego Rivera." data-en="One of the most beautiful Art Nouveau buildings in the Americas, housing Diego Rivera's most powerful murals." data-de="Eines der schönsten Jugendstilgebäude Amerikas.">Uno de los edificios Art Nouveau más hermosos de América, con los murales más poderosos de Diego Rivera.</p>
+        <p class="card-desc" data-es="Uno de los edificios Art Nouveau más hermosos de América, con los murales más poderosos de Diego Rivera." data-en="One of the most beautiful Art Nouveau buildings in the Americas, housing Diego Rivera's most powerful murals." data-de="Eines der schönsten Jugendstilgebäude Amerikas — mit den eindrucksvollsten Wandgemälden von Diego Rivera.">Uno de los edificios Art Nouveau más hermosos de América, con los murales más poderosos de Diego Rivera.</p>
         <a href="https://maps.app.goo.gl/rq1bwN7kG6ihVGsy9" target="_blank" class="card-link" data-es="Más información →" data-en="More info →" data-de="Mehr Info →">Más información →</a>
       </div>
       <div class="card">
@@ -929,7 +943,7 @@
       </div>
       <div class="card">
         <div class="tip-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2D5A27" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="#2D5A27"/></svg></div>
-        <h3 class="tip-title" data-es="Conectividad" data-en="Connectivity" data-de="Konnektivität">Conectividad</h3>
+        <h3 class="tip-title" data-es="Conectividad" data-en="Connectivity" data-de="Internet">Conectividad</h3>
         <p class="card-desc" data-es="Compra una eSIM con un plan de datos mexicano antes de aterrizar en México." data-en="Buy an eSIM with a Mexican data plan before you land in Mexico." data-de="Kaufe eine eSIM mit einem mexikanischen Datenplan, bevor du in Mexiko landest.">La mayoría de hoteles tienen WiFi excelente. Una eSIM cuesta ~10–15 € por semana. Configurar Uber antes de aterrizar.</p>
       </div>
       <div class="card">
@@ -1144,7 +1158,7 @@
       <h3 data-es="¡Gracias!" data-en="Thank you!" data-de="Danke!">¡Gracias!</h3>
       <p data-es="Recibimos tu confirmación y no podemos esperar para celebrar contigo en la Ciudad de México." data-en="We've received your RSVP and can't wait to celebrate with you in Mexico City." data-de="Wir haben eure RSVP erhalten und freuen uns riesig.">Recibimos tu confirmación y no podemos esperar para celebrar contigo en la Ciudad de México.</p>
     </div>
-    <p class="rsvp-notice" style="background:rgba(0,0,0,0.28); padding:1rem 1.5rem; border-radius:4px; display:inline-block;" data-es="Tu respuesta se guardará automáticamente. Stephanie y Victor recibirán una notificación." data-en="Your response is saved automatically. Stephanie & Victor will be notified. Questions? Contact your wedding coordinator." data-de="Eure Antwort wird automatisch gespeichert. Fragen? Wendet euch an eure Hochzeitskoordinatorin.">Tu respuesta se guarda automáticamente. Stephanie y Victor recibirán una notificación.</p>
+    <p class="rsvp-notice" style="background:rgba(0,0,0,0.28); padding:1rem 1.5rem; border-radius:4px; display:inline-block;" data-es="Tu respuesta se guardará automáticamente. Stephanie y Victor recibirán una notificación." data-en="Your response is saved automatically. Stephanie & Victor will be notified." data-de="Eure Antwort wird automatisch gespeichert. Stephanie &amp; Victor erhalten eine Benachrichtigung.">Tu respuesta se guarda automáticamente. Stephanie y Victor recibirán una notificación.</p>
   </div>
 </section>
 
@@ -1192,6 +1206,21 @@ function toggleAccordion(bodyId, header) {
 var lang = 'es';
 var attending = 'yes';
 var WEDDING_DATE = new Date('2027-05-08T15:30:00');
+
+function chooseLang(l) {
+  localStorage.setItem('lang', l);
+  document.getElementById('langPopup').style.display = 'none';
+  setLang(l);
+}
+
+// On load: check saved language
+(function() {
+  var saved = localStorage.getItem('lang');
+  if (saved) {
+    document.getElementById('langPopup').style.display = 'none';
+    document.addEventListener('DOMContentLoaded', function() { setLang(saved); });
+  }
+})();
 
 function setLang(l) {
   lang = l;
